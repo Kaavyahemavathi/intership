@@ -1,0 +1,239 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8fc">
+  <meta name="description" content="Discover internship opportunities across technology, design, analytics and cybersecurity.">
+  <title>Launchpad | Internship Opportunities</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#" aria-label="Launchpad home">
+        <span class="brand-mark">L</span>
+        <span>launchpad<span class="brand-period">.</span></span>
+      </a>
+
+      <nav class="header-nav" aria-label="Main navigation">
+        <a href="#opportunities">Opportunities</a>
+        <a href="#how-it-works">How it works</a>
+      </nav>
+
+      <a class="header-cta" href="#opportunities">
+        Find an internship <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">
+            <span class="status-dot"></span>
+            YOUR NEXT CHAPTER STARTS HERE
+          </p>
+
+          <h1>Find work that<br>moves you <span>forward.</span></h1>
+
+          <p class="hero-description">
+            Discover internship opportunities, develop practical skills,
+            and take the next step in your career.
+          </p>
+
+          <a class="primary-button" href="#opportunities">
+            Explore opportunities <span aria-hidden="true">↓</span>
+          </a>
+
+          <div class="hero-trust">
+            <span class="trust-icon" aria-hidden="true">✓</span>
+            Opportunities across growing industries
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="visual-orbit orbit-one"></div>
+          <div class="visual-orbit orbit-two"></div>
+          <div class="visual-core"><span class="core-symbol">↗</span></div>
+
+          <div class="floating-card floating-card-top">
+            <span class="float-icon purple">✳</span>
+            <span>
+              <strong>Find your fit</strong>
+              <small>Skills meet opportunity</small>
+            </span>
+          </div>
+
+          <div class="floating-card floating-card-bottom">
+            <span class="float-icon green">✓</span>
+            <span>
+              <strong>Take the next step</strong>
+              <small>Build your career</small>
+            </span>
+          </div>
+
+          <span class="visual-spark spark-one">✦</span>
+          <span class="visual-spark spark-two">✧</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="opportunities-section" id="opportunities">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">OPPORTUNITY BOARD</p>
+            <h2>Find your next opportunity</h2>
+            <p class="section-description">
+              Search roles, explore domains, and discover opportunities
+              that match your interests.
+            </p>
+          </div>
+          <div class="results-count" id="results-count" aria-live="polite">
+            Loading opportunities…
+          </div>
+        </div>
+
+        <form class="filter-panel" id="filter-form" role="search">
+          <div class="filter-field search-field">
+            <label for="search-input">Search opportunities</label>
+            <div class="input-with-icon">
+              <span aria-hidden="true">⌕</span>
+              <input
+                id="search-input"
+                type="search"
+                name="search"
+                placeholder="Role, skill, publisher or keyword"
+                autocomplete="off"
+              >
+            </div>
+          </div>
+
+          <div class="filter-field">
+            <label for="domain-filter">Domain</label>
+            <select id="domain-filter" name="domain">
+              <option value="all">All domains</option>
+            </select>
+          </div>
+
+          <div class="filter-field">
+            <label for="mode-filter">Work mode</label>
+            <select id="mode-filter" name="mode">
+              <option value="all">All work modes</option>
+              <option value="Remote">Remote</option>
+              <option value="Hybrid">Hybrid</option>
+              <option value="On-site">On-site</option>
+            </select>
+          </div>
+
+          <div class="filter-field">
+            <label for="sort-filter">Sort by</label>
+            <select id="sort-filter" name="sort">
+              <option value="title">Role name (A–Z)</option>
+              <option value="openings">Most openings</option>
+              <option value="publisher">Publisher (A–Z)</option>
+            </select>
+          </div>
+
+          <button class="reset-button" type="reset">Reset filters</button>
+        </form>
+
+        <div class="filter-summary">
+          <p id="filter-summary-text">Browse available opportunities.</p>
+          <span class="keyboard-hint"><kbd>/</kbd> to search</span>
+        </div>
+
+        <div class="listing-grid" id="listing-grid"
+             aria-label="Internship listings" aria-busy="true"></div>
+
+        <section class="feedback-state" id="empty-state" hidden>
+          <div class="state-icon" aria-hidden="true">⌕</div>
+          <h3>No matching opportunities</h3>
+          <p>Try a different keyword or remove one or more filters.</p>
+          <button class="secondary-button" type="button" id="empty-reset">
+            Clear all filters
+          </button>
+        </section>
+
+        <section class="feedback-state error-state" id="error-state" hidden>
+          <div class="state-icon" aria-hidden="true">!</div>
+          <h3>Unable to load opportunities</h3>
+          <p id="error-message">Please try again.</p>
+          <button class="secondary-button" type="button" id="retry-button">
+            Retry
+          </button>
+        </section>
+
+        <div class="loading-state" id="loading-state" role="status" hidden>
+          <span class="loading-spinner" aria-hidden="true"></span>
+          Loading opportunities…
+        </div>
+      </div>
+    </section>
+
+    <section class="how-section" id="how-it-works">
+      <div class="container">
+        <div class="section-heading centered-heading">
+          <p class="eyebrow">YOUR CAREER, IN MOTION</p>
+          <h2>Three steps to get started</h2>
+          <p class="section-description">
+            Find a role that fits your interests and take the next step.
+          </p>
+        </div>
+
+        <div class="steps-grid">
+          <article class="step-card">
+            <span class="step-number">01</span>
+            <div class="step-icon" aria-hidden="true">⌕</div>
+            <h3>Explore</h3>
+            <p>Discover roles across technical and creative domains.</p>
+          </article>
+
+          <article class="step-card">
+            <span class="step-number">02</span>
+            <div class="step-icon" aria-hidden="true">◎</div>
+            <h3>Find your fit</h3>
+            <p>Compare skills, work modes, locations and publishers.</p>
+          </article>
+
+          <article class="step-card">
+            <span class="step-number">03</span>
+            <div class="step-icon" aria-hidden="true">↗</div>
+            <h3>Take action</h3>
+            <p>Review the role and follow its application instructions.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <a class="brand footer-brand" href="#">
+        <span class="brand-mark">L</span>
+        <span>launchpad<span class="brand-period">.</span></span>
+      </a>
+      <p>Make your next move count.</p>
+      <a href="#main-content">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <dialog class="details-dialog" id="details-dialog"
+          aria-labelledby="dialog-title">
+    <div class="dialog-header">
+      <span class="dialog-label">OPPORTUNITY DETAILS</span>
+      <button class="dialog-close" id="dialog-close" type="button"
+              aria-label="Close internship details">×</button>
+    </div>
+    <div id="dialog-content"></div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>
